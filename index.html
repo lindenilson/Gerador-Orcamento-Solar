@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Proposta</title>
+    <link rel="stylesheet" href="./css/geral.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/mobile.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+
+    <link rel="icon" type="image/x-icon" href="./img/favicon.png">
+
+</head>
+
+<body>
+    <!-- INICIO HOME DA PAGINA-->
+
+    <input id="close-menu" class="close-menu" type="checkbox" aria-label="Close menu" role="button">
+    <label class="close-menu-label" for="close-menu" title="close menu"></label>
+    <aside class="menu">
+        <div class="menu-content">
+            <h1 onclick="getElementById('close-menu').checked = false;">
+                <a href="#">
+                    <img src="./img/logo.png" alt="logo-da-pagina">
+                </a>
+            </h1>
+            <nav>
+                <ul onclick="getElementById('close-menu').checked = false;">
+                    <li><a href="#gerador-proposta">Gerador de Proposta</a></li>
+                    <li class="drop-hover"><a href="#">Geração max. Inversor <i class='bx bxs-down-arrow'></i></a>
+                        <div class="drop">
+                            <a href="./geracao-max.html#tabela-deye">Inversor Deye</a>
+                            <a href="geracao-max.html#tabela-growatt">Inversor Growatt</a>
+                        </div>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    <!-- FIM HOME DA PAGINA-->
+
+    <div class="espaco"></div>
+
+    <!-- INICIO PRIMEIRA SEÇÃO, PARTE DE GERAR PROPOSTA-->
+    <section id="gerador-proposta" class="section form-content">
+        <h1>GERADOR DE PROPOSTA</h1>
+        <div class="contact-content main-content">
+            <div class="contact-form">
+                <fieldset class=" form-grid info-proposta">
+
+                    <!-- Adicione um campo de entrada para o número do WhatsApp -->
+                    <div class=" form-group whatsapp-number">
+                        <label for="numeroWhatsApp">Número do WhatsApp (com DDD):</label>
+                        <input type="text" id="numeroWhatsApp" name="numeroWhatsApp">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="endereco">Endereço: </label>
+                        <input type="text" id="endereco" name="endereco">
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="paineis">Quantidade de Painéis:</label>
+                        <input type="number" id="paineis" name="paineis" min="0" oninput="validarPositivo(this)">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="potenciaPaineis">Potência dos Painéis (W):</label>
+                        <input type="number" id="potenciaPaineis" name="potenciaPaineis" value="570" min="0" step="5"
+                            oninput="validarPositivo(this)">
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="inversor">Inversor (kW): </label>
+                        <input type="number" id="inversor" name="inversor" min="0" oninput="validarPositivo(this)">
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="marcaInversor">Marca do Inversor:</label>
+                        <select id="marcaInversor" name="marcaInversor">
+                            <option value="Deye">Deye</option>
+                            <option value="Growatt">Growatt</option>
+                            <option value="Saj">Saj</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tipoInversor">Tipo do Inversor:</label>
+                        <select id="tipoInversor" name="tipoInversor">
+                            <option value="">Selecione</option>
+                            <option value="Monofásico 220v">Monofásico 220v</option>
+                            <option value="Trifásico 380v">Trifásico 380v</option>
+                            <option value="Trifásico 220v">Trifásico 220v</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="estrutura">Estrutura: </label>
+                        <select id="estrutura" name="estrutura">
+                            <option value="">Selecione</option>
+                            <option value="Solo">Solo</option>
+                            <option value="Telhado Metálico">Telhado Metálico</option>
+                            <option value="Telhado Cerâmico">Telhado Cerâmico</option>
+                            <option value="Por Conta do Cliente">Por Conta do Cliente</option>
+                            <option value="Solo com Eucalipto por Conta do Cliente">Solo com Eucalipto por Conta do
+                                Cliente</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <fieldset class=" form-grid pagamento-proposta">
+                    <legend class="pagamento">Forma de Pagamento</legend>
+
+                    <div class="form-group">
+                        <label for="custo">Custo no Boleto (R$): </label>
+                        <input type="number" id="custo" name="custo" min="0" oninput="validarPositivo(this)">
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="entrada">Valor de Entrada (R$): </label>
+                        <input type="number" id="entrada" name="entrada" min="0" oninput="validarPositivo(this)">
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="parcelas">Quantidade de Parcelas: </label>
+                        <select id="parcelas" name="parcelas">
+                            <option value="selecione">Selecione</option>
+                            <option value="1">1X</option>
+                            <option value="2">2X</option>
+                            <option value="3">3X</option>
+                            <option value="4">4X</option>
+                            <option value="5">5X</option>
+                            <option value="6">6X</option>
+                            <option value="7">7X</option>
+                            <option value="8">8X</option>
+                            <option value="9">9X</option>
+                            <option value="10">10X</option>
+                            <option value="11">11X</option>
+                            <option value="12">12X</option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taxa">Custo com Taxa Cartão (R$):</label>
+                        <input type="number" id="taxa" name="taxa" min="0" oninput="validarPositivo(this)">
+
+                    </div>
+                </fieldset>
+                <div class="textarea">
+                    <label for="observacao">Observações:</label>
+                    <textarea name="observacao" id="observacao"></textarea>
+                </div>
+                <div class="button form-group ">
+                    <button class="whatsApp" type="button" onclick="enviarWhatsApp()">Enviar via WhatsApp</button>
+                    <button class="generatePDF" type="button" onclick="generatePDF()">Gerar Orçamento em PDF</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FIM PRIMEIRA SEÇÃO, PARTE DE GERAR PROPOSTA-->
+    <script src="./js/script-whats.js"></script>
+    <script src="./js/script-pdf.js"></script>
+</body>
+
+</html>
