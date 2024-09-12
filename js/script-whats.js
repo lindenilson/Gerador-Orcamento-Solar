@@ -165,7 +165,7 @@ Por que escolher a IrriSol?
     const numeroWhatsApp = document.getElementById('numeroWhatsApp').value;
 
     if (numeroWhatsApp) {
-        const url = `https://api.whatsapp.com/send?phone=55${numeroWhatsApp}&text=${encodeURIComponent(mensagem)}`;
+        const url = `https://web.whatsapp.com/send?phone=55${numeroWhatsApp}&text=${encodeURIComponent(mensagem)}`;
         window.open(url, '_blank');
     }
 }
