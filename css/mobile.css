@@ -24,13 +24,27 @@
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 680px) {
     .menu {
         bottom: 0;
         height: 100vh;
 
 
     }
+
+    div .form-grid-tabela {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+    }
+
+    .form-grid-tabela input,
+    select {
+        min-width: 100%;
+    }
+
 
     .menu-content,
     .menu-content ul {

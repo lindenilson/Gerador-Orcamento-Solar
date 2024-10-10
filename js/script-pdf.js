@@ -117,7 +117,7 @@ function generatePDF() {
         doc.setFont("helvetica", "normal");
         doc.setFontSize(12);
         doc.text(`- ${paineis} Painel Solar Fotovoltaico ${potenciaPaineis} Wp;`, 20, 110);
-        doc.text(`- 1 Inversor Solar ${inversor} kW ${tipoInversor} ${marcaInversor};`, 20, 115);
+        doc.text(`- 1 Inversor Solar ${inversor} kW ${tipoInversor};`, 20, 115);
         doc.text(`- Estrutura ${estrutura};`, 20, 120);
         doc.text(`- Cabos;`, 20, 125);
         doc.text(`- Projeto;`, 20, 130);
